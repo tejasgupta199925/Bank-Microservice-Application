@@ -44,33 +44,33 @@ public class AccountController {
     }
 	
 //	Add new account
-	@PostMapping("account")
+	@PostMapping("addAccount")
 	public ResponseEntity<ServiceResponse<AccountDto>> addAccount(@RequestBody AccountDto account){		
 		return accountService.createAccount(account);
 	}
 	
 //	Fetch single account with customer data
-	@GetMapping("accounts")
+	@GetMapping("getAccount")
 	public ResponseEntity<ServiceResponse<CustomerAccountDTO>> fetchAccountCustomerInfo(@RequestHeader(value = "id", required = true) UUID id) {
 		return accountService.fetchAccountCustomerInfo(id);
 	}
 	
 //	Make a deposit
-	@PutMapping("deposit")
+	@PutMapping("accountDeposit")
 	public ResponseEntity<ServiceResponse<AccountDto>> depositMoney(@RequestHeader(value = "id", required = true) UUID id,
 			@RequestHeader(value = "amount", required = true) BigDecimal amount) {
 		return accountService.updateAccountBalance(id, amount, true);
 	}
 	
 //	Make a withdrawal
-	@PutMapping("withdraw")
+	@PutMapping("accountWithdraw")
 	public ResponseEntity<ServiceResponse<AccountDto>> withdrawMoney(@RequestHeader(value = "id", required = true) UUID id, 
 			@RequestHeader(value = "amount", required = true) BigDecimal amount) {
 		return accountService.updateAccountBalance(id, amount, false);
 	}
 	
 //	Delete an account only
-	@DeleteMapping("accounts")
+	@DeleteMapping("deleteAccounts")
 	public ResponseEntity<ServiceResponse<AccountDto>> deleteAccount(@RequestHeader(value = "id", required = true) UUID id,
 			@RequestHeader(value = "accountId", required = false, defaultValue = "true") boolean accountId) {
 		logger.info("Instance running: " + applicationName + " on port " + serverPort);

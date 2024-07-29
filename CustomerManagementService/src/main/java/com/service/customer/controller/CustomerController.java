@@ -45,25 +45,25 @@ public class CustomerController {
 
 	
 //	Add new Customer
-	@PostMapping("customer")
+	@PostMapping("addCustomer")
 	public ResponseEntity<ServiceResponse<CustomerDto>> createCustomer(@RequestBody CustomerDto customer) throws Exception{
 		return customerService.createCustomer(customer);
 	}
 
 //	Fetch single or all customers with associated accounts
-	@GetMapping("customers")
+	@GetMapping("fetchCustomers")
 	public ResponseEntity<ServiceResponse<CustomerAccountDTO>> getAllCustomers(@RequestHeader(value = "id", required = false) UUID id) {
 		return customerService.getAllCustomers(id);
 	}
 	
 //	Update existing Customer
-	@PutMapping("customer")
+	@PutMapping("updateCustomerDetails")
 	public ResponseEntity<ServiceResponse<CustomerDto>> updateCustomer(@RequestHeader("id") UUID id, @RequestBody CustomerDto customer) {
 		return customerService.updateCustomer(id, customer);
 	}
 	
 //	Delete existing customer and associated accounts
-	@DeleteMapping("customer")
+	@DeleteMapping("deleteCustomer")
 	public ResponseEntity<ServiceResponse<Void>> deleteCustomer(@RequestHeader("id") UUID id) {
 		return customerService.deleteCustomer(id);
 	}

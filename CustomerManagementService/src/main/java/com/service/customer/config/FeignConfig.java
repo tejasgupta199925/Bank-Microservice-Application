@@ -18,7 +18,7 @@ public interface FeignConfig {
 	public ResponseEntity<ServiceResponse<AccountDto>> fetchAccounts(@RequestHeader(value = "id", required = false) UUID id,
 			@RequestHeader(value = "accountId", required = false, defaultValue = "true") boolean accountId);
 	
-	@DeleteMapping("account/accounts")
+	@DeleteMapping("account/deleteAccounts")
 	public ResponseEntity<ServiceResponse<AccountDto>> deleteAccount(@RequestHeader(value = "id", required = true) UUID id,
 			@RequestHeader(value = "accountId", required = false, defaultValue = "true") boolean accountId);
 	
